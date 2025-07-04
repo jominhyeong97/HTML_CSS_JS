@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html_css_js_basic</title>
+    <!-- 외부 스타일 import시에 link태그 사용 -->
+    <link rel="stylesheet" href="css/mystyle.css">
+
+    <!-- 자식선택자 : 중요도 낮음..-->
+     <div>
+        <h2>자식 선택자 예시</h2>
+     </div>
+
+     <h2>자식선택자 예시</h2>
+
+
+     <!-- js적용방법 2가지 : 내부스크립트(head,body(여기다쓰자그냥)),외부스크립트 -->
+     
+     <script>
+        document.getElementById("load1").innerHTML="change1";
+        function updateF1() {
+        document.getElementById("f1").innerHTML="change1";
+        }
+     </script>
+    
+    
+    
+    
+    <style>
+        /* style적용 대체적으로 구체적인 요소가 우선함 */
+
+        /* 태그선택 */
+        p{
+            color: gray; text-align: center;
+        }
+        /* 클래스 선택 */
+        .c1{
+            color: blue;
+        }
+        /* id선택 */
+        #i1 {
+            color: red;
+        }
+
+        .c2{
+            text-decoration: underline;
+        }
+
+        /* 자식선택자 */
+        div > h2 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- css스타일 적용방법 3가지 -->
+    <!-- 1. 인라인 스타일 : 태그 내에서 style옵션 사용 -->
+    <p style="color: greenyellow; text-align: center;">인라인스타일적용</p>    
+    
+    <!-- 2.내부 스타일 적용 : 태그선택자, 클래스 선택자, ID(유일)선택자 -->
+     <p>태그 스타일 적용</p>
+     <p class="c1">클래스 선택자 적용</p>
+     <!-- 두 클래스 중첩적용 -->
+     <p class="c1 c2">두 클래스 중첩 선택자 적용</p>
+
+     <p id="i1">ID선택자 적용</p>
+
+     <!-- 3. 외부스타일 -->
+      <p id="external">외부스타일 적용</p>
+    
+
+    <h2>javascript 예시</h2>
+    <!-- js는 상달의 head부터 순차적으로 실행되기 때문에 순서에 따라 반영이 안될 수 있음 -->
+    <!-- 반영안됨 -->
+    <p id = "load1">js 로드순서1</p> 
+    <!-- 반영됨 -->
+    <p id = "load2">js 로드순서2</p>
+    
+    <p id = "f1">변경될 내용1</p>
+    <!-- onclick : 버튼을 클릭하면, updateF1() : 함수를 실행 -->
+    <button onclick="updateF1()">내용1 변경</button>
+    <button onclick="updateF3()">내용1 원복</button>
+    <p id = "f2">변경될 내용2</p>
+    <button onclick="updateF2()">내용2 변경</button>
+    <button onclick="updateF4()">내용2 원복</button>
+
+    <script src = "js/myJs.js"></script>
+    <script>
+        document.getElementById("load2").innerHTML="change2";
+        function updateF2() {
+        document.getElementById("f2").innerHTML="change2";
+        }
+        
+    </script>
+
+</body>
+</html>
