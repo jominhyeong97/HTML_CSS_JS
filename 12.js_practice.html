@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+</head>
+<body>
+<!-- name의 역할? id는 알겠는데 -->
+    <select name="" id="select"> 
+        <option value="+" id="+">+</option>
+        <option value="-" id="-">-</option>
+        <option value="x" id="x">x</option>
+        <option value="/" id="/">/</option>
+    </select> 
+    <input type="text" id="test1">
+    <input type="text" id="test2">
+    <button onclick="dataGet()" >계산하기</button>
+    <script>
+        function dataGet() {
+            const myValue1 = Number(document.getElementById('test1').value);
+
+            const myValue2 = Number(document.getElementById('test2').value);
+            
+            let selectValue = document.getElementById('select').value
+
+            if(selectValue === "+") {
+                document.getElementById("result").innerHTML = myValue1 + myValue2;
+            } else if(selectValue === "-") {
+                document.getElementById("result").innerHTML = myValue1 - myValue2;
+            } else if(selectValue === "x") {
+                document.getElementById("result").innerHTML = myValue1 * myValue2;
+            } else if(selectValue === "/") {
+                document.getElementById("result").innerHTML = myValue1 / myValue2;
+            }
+            
+        }
+
+        
+    </script>
+
+    <p id="result">결과값</p>
+</body>
+</html>
