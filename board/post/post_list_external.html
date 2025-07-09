@@ -43,7 +43,7 @@
       <table class="table">
         <thead>
           <tr>
-      
+            <th>userId</th>
             <th>id</th>
             <th>title</th>
           </tr>
@@ -59,18 +59,18 @@
   <script>
 
     async function dataInput () {
-      const data = await axios.get("http://localhost:8080/post/list");
+      const data = await axios.get("https://jsonplaceholder.typicode.com/posts/");
       for(let i=0; i<data.data.length; i++) {
       document.getElementById("tbody").innerHTML += 
       `<tr>
-        
+            <td>${data.data[i].userId}</td>
             <td>${data.data[i].id}</td>
             <td>${data.data[i].title}</td>
           </tr>`
       }
 
     }
-
+    
     dataInput();
     
     

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시글 상세 조회</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  </head>
+  <body>
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+      <a href="../post/post_list.html" class="navbar-brand mx-auto"
+        >게시판 서비스</a
+      >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="../author/author_list.html" class="nav-link">회원 목록</a>
+        </li>
+        <li class="nav-item">
+          <a href="../post/post_list.html" class="nav-link">게시글 목록</a>
+        </li>
+        <li class="nav-item">
+          <a href="../author/author_register.html" class="nav-link"
+            >회원 가입</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h3>게시글 상세 조회</h3>
+      <input type="text" id="inputBox" >
+      <button onclick="detailSearch()" class="btn btn-primary">조회</button>
+      <table class="table">
+        <thead>
+        <tr>
+          <td>id</td>
+          <td>userId</td>
+          <td>title</td>
+          <td>body</td>
+        </tr>
+        </thead>
+
+        <tbody id="tbody">
+
+        </tbody>
+      
+      </table>
+    </div>
+  </body>
+
+  <script>
+    async function detailSearch() {
+        const detailData = await axios.get("https://jsonplaceholder.typicode.com/posts/"); 
+        
+        let input = document.getElementById('inputBox').value;
+        if(input < 1 || input > 100) {
+          alert('유효한 값을 입력해주세요');
+          window.location.reload;
+        } else {
+        
+        let result = detailData.data;
+        for(let a=0; a<result.length; a++) {
+          if(result[a].id == input) {
+            document.getElementById('tbody').innerHTML = 
+              `<tr>
+              <td>${result[a].id}</td>
+              <td>${result[a].userId}</td>
+              <td>${result[a].title}</td>
+              <td>${result[a].body}</td>
+              </tr>`
+          }
+        }
+      }     
+    }
+  </script>
+
+</html>
